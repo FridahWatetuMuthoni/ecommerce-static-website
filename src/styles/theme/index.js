@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme, lighten } from "@mui/material";
 
 export const Colors = {
   primary: "#5f2c3e",
@@ -10,7 +10,7 @@ export const Colors = {
   dark: "#0e1b20",
   light: "#aaa",
   muted: "#abafb3",
-  border: "#000FE1",
+  border: "#DDDFE1",
   inverse: "#2F3D4A",
   shaft: "#333",
   //Grays
@@ -35,9 +35,54 @@ const theme = (mode) =>
       },
       secondary: {
         main: Colors.secondary,
-        light: Colors.secondary,
-        dark: "#B596B0",
+        light: "#AB85A7",
+        dark: Colors.secondary,
         contrastText: Colors.black,
+      },
+      cards: {
+        main: Colors.light_gray,
+        light: Colors.light_gray,
+        dark: "#121212",
+        // contrastText: Colors.black,
+      },
+    },
+    components: {
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            width: 250,
+            background: Colors.primary,
+            color: Colors.secondary,
+            borderRadius: "0px 100px 0px 0px",
+            borderRight: `1px solid ${Colors.secondary}`,
+          },
+        },
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            borderColor: lighten(Colors.primary, 0.2),
+          },
+        },
+      },
+      MyShopButton: {
+        styleOverrides: {
+          root: {
+            color: Colors.white,
+          },
+          primary: {
+            background: Colors.primary,
+            "&:hover": {
+              background: lighten(Colors.primary, 0.05),
+            },
+          },
+          secondary: {
+            background: `${Colors.secondary}`,
+            "&:hover": {
+              background: lighten(Colors.primary, 0.05),
+            },
+          },
+        },
       },
     },
   });

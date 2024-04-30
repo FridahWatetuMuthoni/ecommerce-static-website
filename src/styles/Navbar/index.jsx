@@ -1,4 +1,4 @@
-import { Box, List, Typography, styled } from "@mui/material";
+import { Box, List, Paper, Typography, styled } from "@mui/material";
 import { Colors } from "../theme";
 import "@fontsource/montez";
 
@@ -8,12 +8,13 @@ export const NavbarContainer = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   padding: "2px 8px",
+  marginBottom: "5px",
 });
 
 export const NavbarHeader = styled(Typography)({
   padding: "4px",
   flexGrow: 1,
-  fontSize: "4em",
+  fontSize: "3em",
   fontFamily: '"Montez","cursive"',
   color: Colors.secondary,
 });
@@ -29,14 +30,13 @@ export const ActionIconsDesktop = styled(Box)({
   flexGrow: 0,
 });
 
-export const ActionIconsMobile = styled(Box)({
+export const ActionIconsMobile = styled(Paper)({
   display: "flex",
-  background: Colors.shaft,
   position: "fixed",
   bottom: 0,
   left: 0,
   width: "100%",
   alignItems: "center",
   zIndex: 99,
-  borderTop: `1px solid ${Colors.border}`,
+  padding: "0",
 });

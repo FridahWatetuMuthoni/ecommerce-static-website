@@ -1,10 +1,9 @@
-import { useMediaQuery, useTheme } from "@mui/material";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
+import useGlobalContext from "../../hooks/useGlobalContext";
 
 function Navbar() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const { matches } = useGlobalContext();
   return (
     <>
       {matches ? (

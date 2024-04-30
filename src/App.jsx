@@ -1,19 +1,19 @@
-import { Button, Container, CssBaseline, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./styles/theme";
 import Navbar from "./components/Navbar/Navbar";
-import useGlobalContex from "./hooks/useGlobalContex";
+import useGlobalContext from "./hooks/useGlobalContext";
+import Banner from "./components/Banner/Banner";
+import AppDrawer from "./components/Drawer/AppDrawer";
 
 function App() {
-  const { mode } = useGlobalContex();
+  const { mode } = useGlobalContext();
   return (
     <ThemeProvider theme={theme(mode)}>
       <Container maxWidth="lg">
         <CssBaseline />
         <Navbar />
-        <Button variant="contained">Change Mode</Button>
-        <Button variant="contained" color="secondary">
-          Change Mode
-        </Button>
+        <Banner />
+        <AppDrawer />
       </Container>
     </ThemeProvider>
   );

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
-function useGlobalContex() {
+function useGlobalContext() {
   return useContext(GlobalContext);
 }
 
-export default useGlobalContex;
+export default useGlobalContext;

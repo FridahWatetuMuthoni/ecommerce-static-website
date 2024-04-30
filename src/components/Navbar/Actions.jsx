@@ -4,34 +4,44 @@ import {
   ActionIconsMobile,
   MyList,
 } from "../../styles/Navbar";
-import { Favorite, Person, ShoppingCart } from "@mui/icons-material";
-import PropTypes from "prop-types";
+import { ModeNight, Person, WbSunny } from "@mui/icons-material";
+import useGlobalContext from "../../hooks/useGlobalContext";
+import { Colors } from "../../styles/theme";
 
 const StyledListButton = styled(ListItemButton)({
   justifyContent: "center",
 });
-const StyledListIcon = styled(ListItemIcon)({
-  display: "flex",
-  justifyContent: "center",
-});
 
-function Actions({ matches }) {
+function Actions() {
+  const { mode, setMode, matches } = useGlobalContext();
   const Component = matches ? ActionIconsMobile : ActionIconsDesktop;
 
+  const handleMode = () => {
+    let new_mode = mode === "dark" ? "light" : "dark";
+    setMode(new_mode);
+  };
+
+  const icon_color = !matches
+    ? ""
+    : mode === "light"
+    ? "#EA95DF"
+    : Colors.secondary;
+
+  const StyledListIcon = styled(ListItemIcon)({
+    display: "flex",
+    justifyContent: "center",
+    color: icon_color,
+  });
+
   return (
-    <Component>
+    <Component elevation={24}>
       <MyList type="row">
-        <StyledListButton>
+        {/* <StyledListButton>
           <StyledListIcon>
             <ShoppingCart />
           </StyledListIcon>
         </StyledListButton>
-        <Divider orientation="vertical" flexItem />
-        <StyledListButton>
-          <StyledListIcon>
-            <Favorite />
-          </StyledListIcon>
-        </StyledListButton>
+         */}
         <Divider orientation="vertical" flexItem />
         <StyledListButton>
           <StyledListIcon>
@@ -39,13 +49,15 @@ function Actions({ matches }) {
           </StyledListIcon>
         </StyledListButton>
         <Divider orientation="vertical" flexItem />
+        <StyledListButton>
+          <StyledListIcon onClick={handleMode}>
+            {mode === "dark" ? <WbSunny /> : <ModeNight />}
+          </StyledListIcon>
+        </StyledListButton>
+        <Divider orientation="vertical" flexItem />
       </MyList>
     </Component>
   );
 }
-
-Actions.propTypes = {
-  matches: PropTypes.bool,
-};
 
 export default Actions;
